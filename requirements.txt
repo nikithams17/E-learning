@@ -1,0 +1,21 @@
+appdirs==1.4.4
+asgiref==3.2.10
+certifi==2020.6.20
+chardet==3.0.4
+distlib==0.3.1
+dj-database-url==0.5.0
+Django==3.0.8
+filelock==3.0.12
+idna==2.10
+mysql==0.0.2
+mysql-connector-python==8.0.21
+mysqlclient @ file:///C:/Users/admin/Downloads/mysqlclient-1.4.6-cp38-cp38-win_amd64.whl
+protobuf==3.12.2
+pytz==2020.1
+requests==2.24.0
+six==1.15.0
+sqlparse==0.3.1
+urllib3==1.25.9
+user-profile==1.0.0
+virtualenv==20.0.27
+virtualenvwrapper-win==1.2.6

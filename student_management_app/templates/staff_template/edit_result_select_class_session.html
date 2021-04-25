@@ -1,0 +1,72 @@
+{% extends 'staff_template/base_template.html' %}
+{% block page_title %}
+Update Result
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+                    <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+             <form role="form" action="/manage_student_result_list_display" method="post">
+            {% csrf_token %}
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Update Result</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+                <div class="card-body">
+                   <div class="form-group">
+                    <label>Class And Subject </label>
+                    <select class="form-control" name="course">
+                        {% for subject in subjects %}
+                            {% for course in courses %}
+                                {% if subject.course_id_id == course.id %}
+                                    <option value="{{ course.id }}">{{ course.course_name }} | {{ subject.subject_name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Session Year</label>
+                    <select class="form-control" name="session_year" id="session_year">
+                        {% for session_year in session_years %}
+                          <option value="{{ session_year.id }}">{{ session_year.session_start_year }} TO {{ session_year.session_end_year }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                   <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Fetch Student</button>
+                </div>
+            </div>
+             </form>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

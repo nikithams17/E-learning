@@ -1,0 +1,80 @@
+{% extends 'staff_template/base_template.html' %}
+{% block page_title %}
+Dashboard
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+
+
+<section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">About Me</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="{% url 'staff_profile_save' %}" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <section id="student-detail-section header">
+              <div id="student-detail-section--inner">
+                <div class="container">
+                  <div class="row py-5">
+                    <div class="col-3">
+                      <img class="staff-profile-img" src="{{ staff.profile_pic }}" alt="" width="200" height="200">
+                    </div>
+                    <div class="col-8">
+                        <h4>Name : {{ user.first_name }} {{ user.last_name }}</h4>
+                        <h4>Username : {{ user.username }}</h4>
+                        <h4>Staff ID : {{ staff.teacher_roll_number }}</h4>
+                         <h4>Gender : {{ staff.gender }}</h4>
+                        <h4>Date Of Birth : {{ staff.dob | date:'d-m-Y' }}</h4>
+                        <h4>Qualification : {{ staff.qualification }}</h4>
+                        <h4>Blood Group : {{ staff.blood_group }}</h4>
+                        <h4>Email ID : {{ user.email }}</h4>
+                        <h4>Contact Number : {{ staff.ph_no }}</h4>
+                        <h4>Address : {{ staff.address }}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+                   <div class="form-group">
+                    <label>Change Password?</label>
+                    <input type="password" class="form-control" name="password" placeholder="Fill only if you want to change password">
+                  </div>
+                   <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Update Password</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

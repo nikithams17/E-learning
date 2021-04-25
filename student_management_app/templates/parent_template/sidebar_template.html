@@ -1,0 +1,85 @@
+{% load static %}
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+
+<div class="brand-link">
+      <div class="brand-text font-weight-light">Welcome {{ user.username }}!</div>
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Sidebar user panel (optional)
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="{% url 'parent_profile' %}" class="d-block">Change Password</a>
+        </div>
+      </div>
+      -->
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            {% url 'parent_home' as parent_home %}
+            <a href="{{ parent_home }}" class="nav-link {% if request.path == parent_home %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'parent_view_attendance' as parent_view_attendance %}
+            {% url 'parent_view_attendance_post' as parent_view_attendance_post %}
+            <a href="{{ parent_view_attendance }}" class="nav-link {% if request.path == parent_view_attendance %} active {% endif %} {% if request.path == parent_view_attendance_post %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                View Attendance
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'parent_view_result' as parent_view_result %}
+            <a href="{{ parent_view_result }}" class="nav-link {% if request.path == parent_view_result %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                View Result
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'parent_all_notification' as parent_all_notification %}
+             <a href="{% url 'parent_all_notification' %}" class="nav-link {% if request.path == parent_all_notification %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Notification
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'parent_feedback' as parent_feedback %}
+            <a href="{{ parent_feedback }}" class="nav-link {% if request.path == parent_feedback %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Feedback
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'parent_profile' as parent_profile %}
+            <a href="{{ parent_profile }}" class="nav-link {% if request.path == parent_profile %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Change Password?
+              </p>
+            </a>
+          </li>
+
+      <!-- /.sidebar-menu -->
+        </ul>
+      </nav>
+    </div>
+    <!-- /.sidebar -->
+  </aside>

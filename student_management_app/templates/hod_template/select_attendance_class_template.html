@@ -1,0 +1,37 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+View Attendance
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+
+      <br>
+      <section class="content">
+          <form role="form" action="/admin_view_attendance" method="post">
+               {% csrf_token %}
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-4">
+
+
+                <h4>Select Class </h4>
+                <select  class="form-control" name="course">
+                  {% for course in courses %}
+                  <option value="{{ course.id }}">{{ course.course_name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+          </div>
+      </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+      <div>
+
+        <button class="btn btn-primary" id="fetch_student">Fetch Attendance details</button>
+      </div>
+          </form>
+    </section>
+
+
+
+    <!-- /.content -->
+{% endblock main_content %}

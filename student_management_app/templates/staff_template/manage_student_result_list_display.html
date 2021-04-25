@@ -1,0 +1,54 @@
+{% extends 'staff_template/base_template.html' %}
+{% block page_title %}
+Update Result
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Update Result</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Roll Number</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Assignment Marks</th>
+                      <th>Exam Marks</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for student in students %}
+                  <tr>
+                      <td>{{ student.roll_number }}</td>
+                      <td>{{ student.admin.first_name }}</td>
+                      <td>{{ student.admin.last_name }}</td>
+                      {% for result in results %}
+                          {% if result.id == student.id %}
+                                <td>{{ result.subject_assignment_marks }}</td>
+                                <td>{{ result.subject_exam_marks }}</td>
+                          {% endif %}
+                      {% endfor %}
+                      <td><a href="{% url 'edit_student_result' student_id=student.id %}" class="btn btn-success">Edit</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

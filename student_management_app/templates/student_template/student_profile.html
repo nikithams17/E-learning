@@ -1,0 +1,87 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+Dashboard
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">About Me</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="{% url 'student_profile_save' %}" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <section id="student-detail-section header">
+              <div id="student-detail-section--inner">
+                <div class="container">
+                  <div class="row py-5">
+                    <div class="col-3">
+                      <img class="student-profile-img" src="{{ student.profile_pic }}" alt="" width="200" height="200">
+                    </div>
+                    <div class="col-8">
+                        <h4>Name : {{ user.first_name }} {{ user.last_name }}</h4>
+                        <h4>Class : {{ student.course_id.course_name }}</h4>
+                        <h4>Roll Number : {{ student.roll_number }}</h4>
+                        <h4>Username : {{ user.username }}</h4>
+                        <h4>Date Of Birth : {{ student.dob | date:'d-m-Y' }}</h4>
+                         <h4>Gender : {{ student.gender }}</h4>
+                        <h4>Blood Group : {{ student.blood_group }}</h4>
+                        <h4>Session : {{ student.session_year_id.session_start_year }} TO {{ student.session_year_id.session_end_year }}</h4>
+                        <h4>Email ID : {{ user.email }}</h4>
+                        <h4>Contact Number : {{ student.ph_no }}</h4>
+                        <h4>Address : {{ student.address }}</h4>
+                        <h4>Parent Email ID : {{ user2.email }}</h4>
+                        <h4>Father's Name : {{ user2.first_name }}</h4>
+                         <h4>Father's Occupation : {{ parent.father_occupation }}</h4>
+                        <h4>Mother's Name : {{ user2.last_name }}</h4>
+                         <h4>Mother's Occupation : {{ parent.mother_occupation }}</h4>
+                        <h4>Emergency Contact: {{ parent.parent_ph_no }}</h4>
+                        <h4>Permanent Address : {{ parent.parent_address }}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div class="form-group">
+                <label>Change Password?</label>
+                <input type="password" class="form-control" name="password" placeholder="Fill only if you want to change password">
+            </div>
+                   <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Update Password</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

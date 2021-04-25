@@ -1,0 +1,86 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+Edit Parent | Username : {{ parent.admin.username }} |  #ID : {{ parent.admin.id }}
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+           <div class="row">
+            <div class="col-md-12">
+             <div class="card card-primary">
+               <div class="card-header">
+                <h3 class="card-title">Parent Details :</h3>
+                </div>
+                 <form role="form" action="/edit_parent_save" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+               <div class="card-body">
+                <div class="form-group">
+               <label>Email address</label>
+              <input type="email" class="form-control" name="parent_email" placeholder="Enter email" autocomplete="off" value="{{ parent.admin.parent_email }}">
+                </div>
+                <div class="form-group">
+               <label>Father's Name</label>
+              <input type="text" class="form-control" placeholder="Father's Name" name="father_name" value="{{ parent.admin.father_name }}">
+               </div>
+                <div class="form-group">
+               <label>Father's Occupation</label>
+              <input type="text" class="form-control" placeholder="Father's Occupation" name="father_occupation" value="{{ parent.father_occupation }}">
+               </div>
+                   <div class="form-group">
+               <label>Mother's Name</label>
+              <input type="text" class="form-control" placeholder="Mother's Name" name="mother_name" value="{{ parent.admin.mother_name }}">
+               </div>
+                <div class="form-group">
+              <label>Mother's Occupation</label>
+            <input type="text" class="form-control" placeholder="Mother's Occupation" name="mother_occupation" value="{{ parent.mother_occupation }}">
+              </div>
+                    <!--
+               <div class="form-group">
+               <label>Username</label>
+                <input type="text" class="form-control" placeholder="Username" name="p_username" autocomplete="off">
+                </div>
+                -->
+                    <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="Phone Number" name="parent_ph_no" value="{{ parent.ph_no }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" placeholder="Address" name="parent_address" value="{{ parent.parent_address }}">
+                  </div>
+                    <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                </div>
+                 </div>
+                 </div>
+                </div>
+                </div>
+
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Save Details</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

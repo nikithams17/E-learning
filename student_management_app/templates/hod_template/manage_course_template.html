@@ -1,0 +1,53 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+Manage Class
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+
+    <section class="content">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Class Details</h3>
+                 <a href="/add_course" class="btn btn-primary float-right">Add Class</a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+
+                      <th>Class</th>
+
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for course in courses %}
+                    <tr>
+
+                      <td>{{ course.course_name }}</td>
+
+                      <td><a href="/edit_course/{{ course.id }}" class="btn btn-success">Edit</a><a href="/delete_course/{{ course.id }}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+
+            </div>
+
+      </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
